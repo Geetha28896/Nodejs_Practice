@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>post man</title>
+</head>
+<body>
+    <script>
+        function easyHTTP() {
+ 
+        // Initialising new XMLHttpRequest method.
+        this.http = new XMLHttpRequest();
+    }
+     
+    // Make an HTTP PUT Request
+    easyHTTP.prototype.put = function (url, data, callback) {
+     
+        // Open an object (POST, PATH,
+        // ASYNC-TRUE/FALSE)
+        this.http.open('PUT', url, true);
+     
+        // Set content-type
+        this.http.setRequestHeader(
+            'Content-type', 'application/json');
+     
+        // Assigning this to self to have scope
+        // of this into the function onload()
+        let self = this;
+     
+        // When the response is ready
+        this.http.onload = function () {
+     
+            // Callback function (Error, response text)
+            callback(null, self.http.responseText);
+        }
+     
+        // Since the data is an object so
+        // we need to stringify it
+        this.http.send(JSON.stringify(data));
+    }
+     
+    // Instantiating easyHTTP
+    const http = new easyHTTP;
+     
+    // Data that we need to update
+    const data = {
+        title:'Custom Put',
+        body: 'This is a custom put'
+    };
+     
+    // Put prototype method(url,data,response text)
+    http.put(
+        'https://jsonplaceholder.typicode.com/posts/5',
+        data, function (err, post) {
+     
+            if (err) {
+                console.log(err);
+            }
+            else {
+                console.log(post);
+            }
+     
+        });
+        </script>
+    
+</body>
+</html>

@@ -1,0 +1,16 @@
+[
+    {
+    "id":1,
+    "firstName": "Geetha",
+    "lastName": "Thanapal",
+    "email": "GeethaT1@quinnox.com",
+    "phone_number": "9025449071"
+},
+{
+    "id":2,
+    "firstName": "Pooja",
+    "lastName": "A",
+    "email": "pooja@quinnox.com",
+    "phone_number": "9087867675"
+}
+]
